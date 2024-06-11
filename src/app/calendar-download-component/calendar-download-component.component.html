@@ -1,0 +1,45 @@
+<div *ngIf="city.name && group" class="row">
+
+    <div class="col">
+
+
+        <h5>Налаштування</h5>
+        <p>Змінити назви подій, які будуть відображатись в календарі</p>
+
+    <small>Пресети</small>
+    <div class="col mb-3 overflow-x-scroll no-scroll-bar">
+        <div class="d-flex align-items-start justify-content-start gap-1">
+            <button *ngFor="let preset of timeTypePresets" type="button" class="btn btn-light text-nowrap"
+                (click)="selectTimeTypePreset(preset.timeType)">
+                {{preset.name}}</button>
+        </div>
+
+    </div>
+
+    <div class="mb-3">
+        <label for="timeTypeYes" class="form-label mb-0 pb-0"><small>Світло є</small></label>
+        <input type="email" class="form-control" id="timeTypeYes" placeholder="" [(value)]="timeType.yes">
+    </div>
+    <div class="mb-3">
+        <label for="timeTypeYes" class="form-label mb-0 pb-0"><small>Можливі відключення</small></label>
+        <input type="email" class="form-control" id="timeTypeYes" placeholder="" [(value)]="timeType.maybe">
+    </div>
+    <div class="mb-3">
+        <label for="timeTypeYes" class="form-label mb-0 pb-0"><small>Світла нема</small></label>
+        <input type="email" class="form-control" id="timeTypeYes" placeholder="" [(value)]="timeType.no">
+    </div>
+
+    <button type="button" class="btn btn-light mb-2  w-100" (click)="createIcal()">Створити календар</button>
+    <div *ngIf="fileLink" class="p-0 m-0">
+        <form method="get" action="{{fileLink}}" class="p-0 mb-3">
+            <button type="submit" class="btn btn-primary w-100">Завантажити</button>
+        </form>
+        <small>Посилання на файл (діє 1 годину):</small>
+        <p class="fw-bold">{{fileLink}}</p>
+    </div>
+
+
+
+    </div>
+    
+</div>

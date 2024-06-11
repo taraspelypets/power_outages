@@ -1,0 +1,54 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <h1>Графік відключень електроенергії</h1>
+    </div>
+    <div class="row pt-5">
+        <div class="col-md-6">
+
+            <div class="row">
+                <div class="col mb-3 overflow-x-scroll no-scroll-bar">
+                    <div class="d-flex align-items-start justify-content-start gap-1">
+                        <button *ngFor="let city of cities | keyvalue" type="button" class="btn btn-light text-nowrap"
+                            [ngClass]="{'active': city.value.name == selectedCity.name}"
+                            (click)="selectCity(city.value)">{{city.value.displayName}}</button>
+                    </div>
+
+                </div>
+
+            </div>
+            <div *ngIf="selectedCity.name!=''" class="row">
+                <div class="col mb-3 overflow-x-scroll no-scroll-bar">
+                    <div class="d-flex align-items-start justify-content-start gap-1">
+                        <button *ngFor="let group of groups  | keyvalue" type="button" class="btn btn-light text-nowrap"
+                            [ngClass]="{'active': group.key == selectedGroup}"
+                            (click)="selectGroup(group.key)">{{group.value}}</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+
+            </div>
+            <div *ngIf="selectedCity.name && selectedGroup" class="row">
+
+                <app-calendar-download-component [city]="selectedCity" [group]="selectedGroup"
+                    [schedule]="schedule"></app-calendar-download-component>
+
+            </div>
+
+            <div *ngIf="!selectedCity.name || !selectedGroup" class="row">
+
+                <p>Щоб переглянути графік відключень та згенерувати календар, виберіть місто та групу.</p>
+
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <app-calendar-component *ngIf="selectedGroup"
+                [schedule]="schedule.data[selectedGroup]"></app-calendar-component>
+            <app-calendar-component *ngIf="!selectedGroup"></app-calendar-component>
+        </div>
+    </div>

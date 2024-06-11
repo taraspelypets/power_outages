@@ -1,0 +1,45 @@
+<div class="table-container">
+    <table class="table" style="background-color: transparent;">
+        <tbody>
+            <tr>
+                <td class="cell cell-hour">
+                    <div class="hour">{{toHourLabel(0)}}</div>
+                </td>
+                <td class="cell cell-day stick" [ngClass]="{'day-today': isToday(1)}">
+                    <div>Пн</div>
+                </td>
+                <td class="cell cell-day stick" [ngClass]="{'day-today': isToday(2)}">
+                    <div>Вт</div>
+                </td>
+                <td class="cell cell-day stick" [ngClass]="{'day-today': isToday(3)}">
+                    <div>Ср</div>
+                </td>
+                <td class="cell cell-day stick" [ngClass]="{'day-today': isToday(4)}">
+                    <div>Чт</div>
+                </td>
+                <td class="cell cell-day stick" [ngClass]="{'day-today': isToday(5)}">
+                    <div>Пт</div>
+                </td>
+                <td class="cell cell-day stick" [ngClass]="{'day-today': isToday(6)}">
+                    <div>Сб</div>
+                </td>
+                <td class="cell cell-day stick" [ngClass]="{'day-today': isToday(7)}">
+                    <div>Нд</div>
+                </td>
+            </tr>
+            <tr *ngFor="let hour of hours">
+                <td class="cell-hour">
+                    <div class="hour">{{toHourLabel(hour)}}</div>
+                </td>
+                <td *ngFor="let day of days" class="cell cell-{{schedule[day][hour]}}"
+                    [ngClass]="{'day-today': isToday(day)}" (click)="cycleType(day, hour)">
+                    <img class="type-icon" src="{{typeImage[schedule[day][hour]]}}" alt=" ">
+                </td>
+
+            </tr>
+
+
+        </tbody>
+    </table>
+    <button *ngIf="editable" type="button" class="btn btn-light text-nowrap" (click)="logSchedule()">Log schedule</button>
+</div>

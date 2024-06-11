@@ -1,0 +1,12 @@
+{
+    "kyiv": {
+        "name":"kyiv",
+        "displayName": "Київ",
+        "scheduleSource":"/assets/kyiv.json"
+    },
+    "lviv":{
+        "name":"lviv",
+        "displayName": "Львів",
+        "scheduleSource":"/assets/lviv.json"
+    }
+}
