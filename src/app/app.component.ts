@@ -22,6 +22,8 @@ import { CalendarComponentComponent } from './calendar-component/calendar-compon
 })
 export class AppComponent {
 
+  mode = "calendar";
+
   cities = cities;
   selectedCity: City = { name: '', displayName: '', scheduleSource: '' };
 
@@ -38,6 +40,9 @@ export class AppComponent {
 
   constructor(private outageDaraSource: OutageDataSource, private tempFileUploadService: TempFileUploadService) {
     this.timeType = this.timeTypePresets[0].timeType;
+  }
+  setMode(mode: string) {
+    this.mode = mode;
   }
   selectCity(city: City) {
     this.selectedCity = city;

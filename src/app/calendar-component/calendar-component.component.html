@@ -32,7 +32,7 @@
                     <div class="hour">{{toHourLabel(hour)}}</div>
                 </td>
                 <td *ngFor="let day of days" class="cell cell-{{schedule[day][hour]}}"
-                    [ngClass]="{'day-today': isToday(day)}" (click)="cycleType(day, hour)">
+                    [ngClass]="{'hour-today': isToday(day)}" (click)="cycleType(day, hour)">
                     <img class="type-icon" src="{{typeImage[schedule[day][hour]]}}" alt=" ">
                 </td>
 

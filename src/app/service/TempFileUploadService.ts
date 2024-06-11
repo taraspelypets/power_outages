@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { TmpfilesUploadResult } from "../model/TmpfilesUploadResult";
 import { Observable, map } from "rxjs";
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
     providedIn: "root",
@@ -12,9 +13,7 @@ export class TempFileUploadService {
 
     public uploadTempFile(fileContent: string, filename: string): Observable<any> {
         let path = 'https://tmpfiles.org/api/v1/upload';
-        // let headers = new HttpHeaders()
-        //   .set('content-type', 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW')
-        // let headers = new HttpHeaders().set('content-type', 'multipart/form-data')
+
         const formData: FormData = new FormData();
         const blob = new Blob([fileContent], { type: 'plain/text' });
 

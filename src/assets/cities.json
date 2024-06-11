@@ -2,11 +2,11 @@
     "kyiv": {
         "name":"kyiv",
         "displayName": "Київ",
-        "scheduleSource":"/assets/kyiv.json"
+        "scheduleSource":"assets/kyiv.json"
     },
     "lviv":{
         "name":"lviv",
         "displayName": "Львів",
-        "scheduleSource":"/assets/lviv.json"
+        "scheduleSource":"assets/lviv.json"
     }
 }

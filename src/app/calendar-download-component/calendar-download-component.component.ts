@@ -31,16 +31,15 @@ export class CalendarDownloadComponentComponent {
 
   createIcal() {
     let icalContent = new ICalMapper().fromDTEKData((<any>this.schedule).data[this.group], this.timeType)
-    this.fileLink = "/link.ics"
-    // console.log(icalContent);
-    // this.tempFileUploadService.uploadTempFile(icalContent, this.createFilename())
-    //   .subscribe((result) => {
-    //     console.log(result)
-    //     if ((<any>result).status == 'success') {
-    //       this.fileLink = (<string>(<any>result).data.url);
-    //     }
 
-    //   });
+    this.tempFileUploadService.uploadTempFile(icalContent, this.createFilename())
+      .subscribe((result) => {
+        console.log(result)
+        if ((<any>result).status == 'success') {
+          this.fileLink = (<string>(<any>result).data.url);
+        }
+
+      });
   }
 
   private createFilename(): string {

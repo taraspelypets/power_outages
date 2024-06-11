@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 import emptySchedule from '../../assets/settings/emptySchedule.json'
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-calendar-component',
@@ -11,6 +12,7 @@ import emptySchedule from '../../assets/settings/emptySchedule.json'
   styleUrl: './calendar-component.component.scss'
 })
 export class CalendarComponentComponent {
+  environment = environment;
   @Input() schedule?: any = emptySchedule;
 
   today: Date = new Date();
@@ -21,10 +23,11 @@ export class CalendarComponentComponent {
   hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 
   typeImage: any = {
-    yes: '/assets/yes-electricity.png',
-    no: '/assets/no-electricity.png',
-    maybe: '/assets/maybe-electricity.png'
+    yes: `${environment.baseUrl}assets/yes-electricity.png`,
+    no: `${environment.baseUrl}assets/no-electricity.png`,
+    maybe: `${environment.baseUrl}assets/maybe-electricity.png`
   }
+
 
   toHourLabel(hour: number) {
     return `${hour.toString().padStart(2, '0')}:00`

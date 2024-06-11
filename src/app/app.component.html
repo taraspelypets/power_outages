@@ -29,13 +29,28 @@
                 </div>
 
             </div>
-            <div class="row">
+            <div  *ngIf="selectedCity.name && selectedGroup" class="row d-md-none mt-3">
+                <div class="col mb-3 overflow-x-scroll no-scroll-bar">
+                    <div class="d-flex align-items-start justify-content-start gap-1">
+                        <button type="button" class="btn btn-light text-nowrap"
+                            [ngClass]="{'active':  mode == 'calendar'}" (click)="setMode('calendar')">Дивитись
+                            графік</button>
+                        <button type="button" class="btn btn-light text-nowrap"
+                            [ngClass]="{'active':  mode == 'ical-gen'}" (click)="setMode('ical-gen')">Створити календар</button>
+                    </div>
+
+                </div>
 
             </div>
-            <div *ngIf="selectedCity.name && selectedGroup" class="row">
 
-                <app-calendar-download-component [city]="selectedCity" [group]="selectedGroup"
+            <div *ngIf="selectedCity.name && selectedGroup" class="row d-md-block" [ngClass]="{'d-none': mode != 'ical-gen'}">
+                <div class="col">
+                    <h4 class="mt-3 mb-3">Створити календар</h4>
+
+                    <app-calendar-download-component [city]="selectedCity" [group]="selectedGroup"
                     [schedule]="schedule"></app-calendar-download-component>
+                </div>
+                
 
             </div>
 
@@ -46,9 +61,22 @@
             </div>
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 d-md-block" [ngClass]="{'d-none': mode != 'calendar'}"
+        >
+            <h4 class="mt-3 mb-3">Графік</h4>
+
             <app-calendar-component *ngIf="selectedGroup"
                 [schedule]="schedule.data[selectedGroup]"></app-calendar-component>
             <app-calendar-component *ngIf="!selectedGroup"></app-calendar-component>
         </div>
+    </div>
+    <div class="row footer">
+        <div class="col">
+            <h6>Тарас Пелипець</h6>
+            <a href="https://github.com/taraspelypets/power_outages">https://github.com/taraspelypets/power_outages</a><br> 
+            <a href="https://www.instagram.com/taraspelypets">https://www.instagram.com/taraspelypets</a>
+
+
+        </div>
+        
     </div>

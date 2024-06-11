@@ -1,12 +1,15 @@
 $width-cell-hour: 50px;
 $height-cell: 50px;
 
+$color-today-highlight: rgb(255, 106, 65);
+
 td {
     background-color: transparent;
 }
 
 .table{
     table-layout: fixed;
+    border-collapse: collapse;
     width: 100%;
     background-color:  transparent;
 }
@@ -41,12 +44,12 @@ td {
     height: $height-cell;
     border-left: 1px solid lightgray;
     border-bottom: 1px dotted darkgrey;
-    width: 100% / 8;
+    width: auto;
 }
 
 .cell-hour {
     text-align: right;
-    min-width: $width-cell-hour;
+    width: $width-cell-hour;
     border: none;
     padding: 0 6px !important;
     
@@ -64,9 +67,11 @@ td {
 }
 
 .day-today {
-    border-right: 2px solid rgb(184, 86, 86);
-    border-left: 2px solid rgb(184, 86, 86);
+    
+font-weight: bold;
+color: $color-today-highlight;
 }
+
 
 .day-today::before {
     
@@ -76,6 +81,10 @@ td {
         // color: red;
         background: red
       
+}
+.hour-today {
+    border-right: 2px solid $color-today-highlight;
+    border-left: 2px solid $color-today-highlight;
 }
 
 .table-container{
