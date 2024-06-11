@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
 export class CalendarDownloadComponentComponent {
   timeTypePresets = timeTypePresets;
 
-  @Input() city: City = { name: '', displayName: '', scheduleSource: '' };
+  @Input() city: City = { name: '', displayName: '', scheduleSource: '', officialRecource: '' };
   @Input() group: string = '';
   @Input() schedule = {};
 

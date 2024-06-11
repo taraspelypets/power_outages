@@ -2,11 +2,13 @@
     "kyiv": {
         "name":"kyiv",
         "displayName": "Київ",
-        "scheduleSource":"assets/kyiv.json"
+        "scheduleSource":"assets/kyiv.json",
+        "officialRecource":"https://www.dtek-kem.com.ua/ua/shutdowns"
     },
     "lviv":{
         "name":"lviv",
         "displayName": "Львів",
-        "scheduleSource":"assets/lviv.json"
+        "scheduleSource":"assets/lviv.json",
+        "officialRecource":"https://poweron.loe.lviv.ua/"
     }
 }

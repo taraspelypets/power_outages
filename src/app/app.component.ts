@@ -25,7 +25,7 @@ export class AppComponent {
   mode = "calendar";
 
   cities = cities;
-  selectedCity: City = { name: '', displayName: '', scheduleSource: '' };
+  selectedCity: City = { name: '', displayName: '', scheduleSource: '', officialRecource:'' };
 
   groups = {};
   selectedGroup: string = '';
