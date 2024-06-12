@@ -1,3 +1,4 @@
+import { log } from "node:console";
 import { Event } from "../model/Event";
 
 export class DTEKScheduleToEventsMapper {
@@ -43,15 +44,25 @@ export class DTEKScheduleToEventsMapper {
     }
 
     private attachDateToEvents(startDate: Date) {
+
         this.events.forEach((event) => {
             let day = new Date(startDate);
-            day.setUTCHours(event.startHour, 0, 0, 0);
+            day.setHours(event.startHour - 1, 0, 0, 0);
 
-            let daysDiff = (event.dayOfTheWeek - 1) - startDate.getDay();
+            let daysDiff = this.toSundayBasedWeekDayIndex(event.dayOfTheWeek) - startDate.getDay();
+
             day.setDate(day.getDate() + daysDiff);
 
             event.start = day;
         })
+    }
+
+    private toSundayBasedWeekDayIndex(mondayBased: number){
+        if(mondayBased == 7) {
+            return 0;
+        }
+
+        return mondayBased;
     }
     private traverseDays(schedule: any, startDayOfWeek: number) {
         this.getDaysOfTheWeekStartingFrom(startDayOfWeek)
@@ -84,7 +95,7 @@ export class DTEKScheduleToEventsMapper {
             days.push(dayOfTheWeek);
 
             dayOfTheWeek++;
-        }
+        }       
 
         return days;
     }

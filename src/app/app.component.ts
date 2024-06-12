@@ -58,23 +58,6 @@ export class AppComponent {
     this.selectedGroup = group;
 
   }
-  createIcal() {
-    let icalContent = new ICalMapper().fromDTEKData((<any>this.schedule).data[this.selectedGroup], this.timeType)
-    this.fileLink = "/link.ics"
-    // console.log(icalContent);
-    // this.tempFileUploadService.uploadTempFile(icalContent, this.createFilename())
-    //   .subscribe((result) => {
-    //     console.log(result)
-    //     if ((<any>result).status == 'success') {
-    //       this.fileLink = (<string>(<any>result).data.url);
-    //     }
-
-    //   });
-  }
-
-  private createFilename(): string {
-    return `${this.selectedCity.name}-${this.selectedGroup}.ics`
-  }
 
   loadSchedule() {
     this.outageDaraSource.getOutageDataForCity(this.selectedCity.name)
@@ -84,7 +67,6 @@ export class AppComponent {
   private setSchedule(schedule: any) {
     this.schedule = schedule;
     this.groups = schedule.sch_names;
-    console.log(schedule);
   }
 
 }
