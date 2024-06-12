@@ -10,5 +10,11 @@
         "displayName": "Львів",
         "scheduleSource":"assets/lviv.json",
         "officialRecource":"https://poweron.loe.lviv.ua/"
+    },
+    "ternopil":{
+        "name":"ternopil",
+        "displayName": "Тернопіль",
+        "scheduleSource":"assets/ternopil.json",
+        "officialRecource":"https://www.toe.com.ua/news/87"
     }
 }
