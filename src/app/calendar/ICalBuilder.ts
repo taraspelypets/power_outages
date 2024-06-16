@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {v4 as uuidv4} from 'uuid';
 import dayjs from 'dayjs'
+import { CalendarEvent } from './model/CalendarEvent';
+import { EventRecurrence } from './model/EventRecurrence';
 
 export class ICalBuilder {
 
@@ -18,6 +20,37 @@ END:VEVENT`
 
         this.events.push(event);
         return this;
+    }
+
+    public addEventg(event: CalendarEvent){
+        `BEGIN:VEVENT
+SUMMARY:${this.cleanText(event.summary)}
+UID:${event.uid}
+DTSTART;TZID=Europe/Kyiv:${this.formatDate(event.startDate)}
+DURATION:${this.parseDuration(event.durationMinutes)}
+${this.parseRecurrense(event.recurrence)}
+END:VEVENT`
+    }
+
+    private parseRecurrense(recurrence?: EventRecurrence):string {
+        if(!recurrence) {
+            return '';
+        }
+        
+        const count = recurrence.count ? `;COUNT=${recurrence.count}` : '';
+        const interval = recurrence.interval ? `;INTERVAL=${recurrence.interval}` : '';
+        const byMunthDay = recurrence.byMunthDay ? `;BYMONTHDAY=${recurrence.byMunthDay}` : '';
+
+
+        return `RRULE:FREQ=${recurrence.frequency + count + interval + byMunthDay}`
+    }
+
+    private cleanText(text?: string){
+        return text;
+    }
+
+    private formatDate(date: Date) {
+        return dayjs(date).format("YYYYMMDDTHHmmss");
     }
 
     private parseDuration(durationMinutes: number): string {

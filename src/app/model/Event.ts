@@ -5,5 +5,4 @@ export interface Event {
     startHour: number;
     start?: Date;
     duration: number;
-    reccurent?: boolean;
 }
